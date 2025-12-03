@@ -64,21 +64,19 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Update user profile
-  const profileUpdate = async (name: string, photo: string) => {
+  const profileUpdate = async (name: string) => {
     if (!auth.currentUser) {
       throw new Error("No user is currently signed in");
     }
 
     await updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photo,
     });
 
     // Update local state
     setUser({
       ...auth.currentUser,
       displayName: name,
-      photoURL: photo,
     });
   };
 
